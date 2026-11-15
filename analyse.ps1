@@ -1,30 +1,3 @@
-$currentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object Security.Principal.WindowsPrincipal($currentIdentity)
-
-$isAdmin = $principal.IsInRole(
-    [Security.Principal.WindowsBuiltInRole]::Administrator
-)
-
-if (-not $isAdmin) {
-    Start-Process powershell.exe -Verb RunAs -ArgumentList @(
-        "-NoProfile"
-        "-ExecutionPolicy", "Bypass"
-        "-File", "`"$PSCommandPath`""
-    )
-
-    exit
-}
-
-if ($env:PSExecutionPolicyPreference -ne "Bypass") {
-    Start-Process powershell.exe -ArgumentList @(
-        "-NoProfile"
-        "-ExecutionPolicy", "Bypass"
-        "-File", "`"$PSCommandPath`""
-    )
-
-    exit
-}
-
 Clear-Host
 Clear-History
 
