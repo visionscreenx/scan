@@ -68,8 +68,7 @@ if ($thirdPartyAntivirus.Count -gt 0) {
         Write-Host "[*] Request the equipment administrator to verify and authorize the analysis tool." -ForegroundColor Gray
         Write-Host ""
     }
-
-    exit
+    Read-Host "Pressione Enter para fechar"
 }
 
 $system32Path = [Environment]::SystemDirectory
